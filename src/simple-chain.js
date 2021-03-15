@@ -9,18 +9,19 @@ const chainMaker = {
   addLink(value) {
     const link = `${value}` ? value : '';
     strArr.push(`( ${link} )`)
-    return chainMaker;
+    return this;
   },
   removeLink(position) {
     if (typeof (position) !== 'number' || isNaN(position) || Math.round(position) !== position || !strArr[position - 1]) {
+      strArr = new Array();
       throw new Error('некорректная позиция')
     }
     strArr.splice(position - 1, 1);
-    return chainMaker;
+    return this;
   },
   reverseChain() {
     strArr.reverse();
-    return chainMaker;
+    return this;
   },
   finishChain() {
     const finalStr = strArr.slice();
